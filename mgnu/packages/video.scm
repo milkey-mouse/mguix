@@ -63,3 +63,11 @@ quality and performance.")
         (file-name (git-file-name (package-name libplacebo) version))
         (sha256
          (base32 "0p5mx8ch7cp7b54yrkl4fs8bcvqma1h461gx6ps4kagn4dsx8asb"))))))
+
+;; TODO: next release of mpv after v0.33 will include a fix that will
+;; allow libplacebo-3 to be used instead of libplacebo v2
+(define-public mpv-libplacebo
+  (package
+    (inherit mpv)
+    (name "mpv-libplacebo")
+    (inputs (append `(("libplacebo" ,libplacebo)) (package-inputs mpv)))))
