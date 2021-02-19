@@ -5,7 +5,6 @@
   #:use-module (guix download)
   #:use-module (guix modules)
   #:use-module (guix packages)
-  #:use-module (guix transformations)
   #:use-module (guix utils))
 
 (define-public mesa-20.3.4
@@ -44,12 +43,3 @@
                        `("drm" "surfaceless")) ","))
                    f)) ,flags))))))
 
-(define-public mesa-opencl-20.3.4
-  (package
-    (inherit ((package-input-rewriting `((,mesa . ,mesa-20.3.4))) mesa-opencl))
-    (version "20.3.4")))
-
-(define-public mesa-opencl-icd-20.3.4
-  (package
-    (inherit ((package-input-rewriting `((,mesa . ,mesa-20.3.4))) mesa-opencl-icd))
-    (version "20.3.4")))
