@@ -107,6 +107,10 @@ licensing status and appears abandoned since 2017.")
        ("ocl-icd" ,ocl-icd)
        ("opencl-headers" ,opencl-headers)
        ("openssl" ,openssl)))
+    ;; BUG: search paths of dependencies are not honored: https://issues.guix.gnu.org/22138
+    ;; fortunately only ocl-icd's are important here
+    (native-search-paths (package-native-search-paths ocl-icd))
+    (search-paths (package-search-paths ocl-icd))
     (synopsis "Ethereum miner with OpenCL, CUDA and stratum support")
     (description
      "Ethminer is an Ethash GPU mining worker: with ethminer you can mine every
